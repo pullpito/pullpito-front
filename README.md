@@ -1,2 +1,2 @@
 # pullpito-front
-desarrollo front-end para sistema de cuentas
+front-end development for Pullpito system 
