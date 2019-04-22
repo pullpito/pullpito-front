@@ -9,9 +9,12 @@
     "npm-install": "npm i"
   },
   "dependencies": {
+    "bootstrap-vue": "^2.0.0-rc.18",
     "core-js": "^2.6.5",
     "node-sass": "^4.11.0",
-    "vue": "^2.6.6"
+    "sass-loader": "^7.1.0",
+    "vue": "^2.6.6",
+    "vue-router": "^3.0.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",
