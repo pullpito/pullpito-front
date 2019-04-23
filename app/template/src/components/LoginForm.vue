@@ -51,7 +51,7 @@
 			return {
 				email: null,
         password: null,
-        errors: [],
+				errors: [],
 			}
 		},
 		computed: {
@@ -73,16 +73,43 @@
 			}
 		},
 		methods: {
-      formValidation(event){
+      formValidation(event) {
         event.preventDefault();
         this.email = this.email || "";
         this.password = this.password || "";
         if(this.emailValid && this.passwordValid) {
-          console.log('send request');
+					let body = {
+						'email': this.email,
+						'password': this.password
+					}
+					this.$api
+						.post('/auth/sign_in', body)
+						.then(response => ( this.loginResponse(response) ))
+						.catch(error => ( console.log(error) ));
         } else {
           console.log('form errors');
-        }
-      }
+				}
+			},
+			loginResponse(response) {
+				console.log(response.headers['access-token']);
+				console.log(response.headers['client']);
+				console.log(response.headers['uid']);
+				// if (response.status === 200) {
+				// 	this.$session.start();
+				// 	this.$session.set('access-token', response.headers['access-token']);
+				// 	this.$session.set('client', response.headers['client']);
+				// 	this.$session.set('uid', response.headers['uid']);
+				// 	this.$api.defaults.headers.common['access-token'] = response.headers['access-token'];
+				// 	this.$api.defaults.headers.common['client'] = response.headers['client'];
+				// 	this.$api.defaults.headers.common['uid'] = response.headers['uid'];
+
+				// 	console.log(this.$api.defaults.headers);
+				// 	this.$router.push('/');
+				// } else {
+				// 	TODO: error message
+				// 	console.log("Response status: " + response.status);
+				// }
+			}
     }
   }
 </script>
