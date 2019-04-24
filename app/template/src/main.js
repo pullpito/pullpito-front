@@ -25,7 +25,6 @@ Vue.use({
   }
 })
 
-
 new Vue({
   router,
   render: h => h(App)

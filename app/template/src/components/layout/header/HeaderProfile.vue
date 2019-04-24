@@ -24,9 +24,21 @@
 export default ({
   name: 'HeaderProfile',
   methods: {
-    logout() {      
-      console.log("cerrar sesion");
-    }
+    logout() {
+			this.$api
+				.delete('/auth/sign_out')
+				.then(response => ( this.logoutResponse(response) ))
+				.catch(error => ( console.log(error) ));
+		},
+		logoutResponse(response) {
+			this.$session.destroy();
+			if(response.status === 200) {
+				this.$router.push('/login');
+			} else {
+				// TODO: Show this message to user
+				console.log("Ocurrió un error al cerrar sesión");
+			}
+		}
   },
 })
 </script>
