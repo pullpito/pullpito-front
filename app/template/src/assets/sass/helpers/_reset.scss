@@ -5,7 +5,8 @@ body {
 	background-color: $bg-primary;
 	margin: 0;
 	padding: 0;
-	font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
 }
 
 img {
@@ -13,7 +14,9 @@ img {
 }
 .container-fluid {
 	max-width: 1990px;
-	padding: 0 25px;
+	padding: 0 100px;
 }
 
-
+// section {
+//   padding: 0;
+// }

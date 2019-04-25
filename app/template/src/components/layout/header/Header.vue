@@ -4,7 +4,7 @@
 			<b-row>
 				<b-col>
 					<b-navbar toggleable="lg" type="dark">
-						<b-navbar-brand href="#">
+						<b-navbar-brand href="/">
 							<img alt="Pullpito Logo" src="@/assets/images/logo-png.png" width="80px" height="auto" />
 						</b-navbar-brand>
 						<b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

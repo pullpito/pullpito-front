@@ -6,7 +6,7 @@ import VueSession from 'vue-session'
 import axios from 'axios'
 
 import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap-vue/dist/bootstrap-vue.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.min.js'
 import '@/assets/sass/main.scss'
 
