@@ -15,14 +15,20 @@
                   {{ errors["email"] }}
                 </b-form-invalid-feedback>
               </b-form-group>
+
               <b-form-group id="fieldset-2" label="Contraseña:" label-for="input-2" description="debes ingresar una contraseña que contenga minimo 8 caracteres">
                 <b-form-input id="input-2" v-model="password" type="password" placeholder="Ingresa tu contraseña" :state="passwordValid"></b-form-input>
                 <b-form-invalid-feedback>
                   {{ errors["password"] }}
                 </b-form-invalid-feedback>
               </b-form-group>
-              <b-button class="button" variant="primary" size="lg" type="submit" >Login</b-button>
+
+              <b-button class="button" variant="primary" size="lg" type="submit" :disabled="disabled" @click="buttonSubmit">Login</b-button>
               <LoginText LoginMessage="¿no estas registrado?" />
+
+              <div class="loader d-flex align-items-center justify-content-center"> 
+                <b-spinner size="lg" label="Loading..." type="grow" variant="info"></b-spinner>          
+              </div> 
             </b-form>
         </b-col>
       </b-row>
@@ -39,6 +45,19 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+  .loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, .5);
+    .spinner-grow {
+      // set large attribute
+      width: 5rem;
+      height: 5rem;
+    }
+  }
 </style>
 
 <script>
@@ -52,7 +71,8 @@
 			return {
 				email: null,
         password: null,
-				errors: [],
+        errors: [],
+        disabled: false,
 			}
 		},
 		computed: {
@@ -71,9 +91,15 @@
         var lengthValidation = this.password != "";
         this.errors["password"] = lengthValidation ? "" : "este campo es requerido";
         return lengthValidation;
-			}
+      }
 		},
 		methods: {
+      buttonSubmit() {
+        console.log(this.disabled);
+        if(this.disabled == false) {
+          this.disabled = true;
+        } 
+      },
       formValidation(event) {
         event.preventDefault();
         this.email = this.email || "";

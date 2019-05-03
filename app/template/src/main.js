@@ -10,8 +10,8 @@ import axios from 'axios'
 // import 'bootstrap/scss/bootstrap-grid.scss'
 // import 'bootstrap/scss/bootstrap-reboot.scss'
 // import 'bootstrap/scss/bootstrap.scss'
-import 'bootstrap/scss/bootstrap.scss';
-// import 'bootstrap-vue/src/index.scss';
+import 'bootstrap/scss/bootstrap.scss'
+// import 'bootstrap-vue/src/index.scss'
 import 'bootstrap-vue/dist/bootstrap-vue.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.min.js'
 import '@/assets/sass/main.scss'

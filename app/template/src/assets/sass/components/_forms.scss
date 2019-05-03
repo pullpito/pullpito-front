@@ -1,6 +1,7 @@
 form {
   background-color: $bg-default;
   text-align: center;
+  position: relative;
   &.form-login {
     border-radius: 12px;
     padding: 80px 40px;

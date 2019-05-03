@@ -1,9 +1,7 @@
 module.exports = {
   runtimeCompiler: undefined,
 
-  css: {
-    sourceMap: true
-  },
+  css: undefined,
 
   publicPath: undefined,
   outputDir: undefined,
