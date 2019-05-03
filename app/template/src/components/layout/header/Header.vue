@@ -1,13 +1,11 @@
 <template>
 	<section id="nav">
-		<b-container fluid >
+		<b-container fluid>
 			<b-row>
 				<b-col>
-					<b-navbar toggleable="lg" type="dark">
-						<b-navbar-brand href="/">
-							<img alt="Pullpito Logo" src="@/assets/images/logo-png.png" width="80px" height="auto" />
-						</b-navbar-brand>
-						<b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+					<b-navbar toggleable="lg" type="">
+            <HeaderBrand />
+            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 						<b-collapse id="nav-collapse" is-nav>
 							<HeaderItem />
 							<HeaderProfile  align-self="end"/>
@@ -22,7 +20,20 @@
 
 <style lang="scss">
 	@import "@/assets/sass/main.scss";
-	@import "header.scss";
+  @import "@/assets/sass/components/_nav.scss";
 </style>
 
-<script src="./Header.js"></script>
+<script>
+  import HeaderItem from './HeaderItem.vue'
+  import HeaderProfile from './HeaderProfile.vue'
+  import HeaderBrand from './HeaderBrand.vue'
+
+  export default {
+    name: 'Header',
+    components: {
+      HeaderItem,
+      HeaderProfile,
+      HeaderBrand
+    }
+  }
+</script>

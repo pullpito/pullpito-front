@@ -6,7 +6,7 @@
 // // Color system
 
 // $white:    #fff !default;
-// $gray-100: #f8f9fa !default;
+$gray-100:  #dddddd !default;
 // $gray-200: #e9ecef !default;
 // $gray-300: #dee2e6 !default;
 // $gray-400: #ced4da !default;
@@ -53,7 +53,7 @@
   --teal: #20c997;
   --cyan: #17a2b8;
   --white: #fff;
-  --gray: #6c757d;
+  --gray: #dddddd;
   --gray-dark: #343a40;
   --primary: #007bff;
   --secondary: #6c757d;
@@ -61,8 +61,8 @@
   --info: #17a2b8;
   --warning: #ffc107;
   --danger: #dc3545;
-  --light: #f8f9fa;
-  --dark: #343a40;
+  --light:  #dddddd;
+  --dark: #212529;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;

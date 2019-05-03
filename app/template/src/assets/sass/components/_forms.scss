@@ -1,5 +1,11 @@
 form {
+  background-color: $bg-default;
   text-align: center;
+  &.form-login {
+    border-radius: 12px;
+    padding: 80px 40px;
+    margin: 100px 0;
+  }
   .form-group {
     text-align: left;
     margin-bottom: 2rem;  
@@ -7,13 +13,13 @@ form {
   .form-control {
     font-size: 0.875rem;
     padding: 0.75rem;
-    height: calc(1.5em + 1.5rem + 2px);
-    border: 3px solid;
+    height: calc(1.5rem + 1.5rem + 2px);
+    border: 3px solid $gray-100;
     border-radius: 3px;
     color: #868e96;
     box-shadow: none;
     &:focus {
-      box-shadow: none;
+      box-shadow: none !important;
     }
   }
   label {
@@ -21,7 +27,7 @@ form {
     text-transform: uppercase;
     font-size: 0.75rem;
     letter-spacing: 0.7px;
-    margin-bottom: 0;
-    color: #868e96;
+    margin-bottom: 5px;
+    color: var(--dark);
   }
 }

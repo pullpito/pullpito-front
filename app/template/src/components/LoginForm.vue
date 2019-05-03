@@ -3,33 +3,27 @@
     <b-container>
       <b-row>
         <b-col md="8" offset-md="2">
-          <div class="login-form">
             <b-form 
               action="" 
               method="post"
               @submit="formValidation"
+              class="form-login"
             >
-              <b-form-group id="fieldset-1" label-for="input-1" >
-                <label for="input-1" class="d-block">Correo*</label>
+              <b-form-group id="fieldset-1" label="Correo:" label-for="input-1">
                 <b-form-input id="input-1" v-model="email" :state="emailValid" placeholder="example@example.com" type="text" ></b-form-input>
                 <b-form-invalid-feedback>
                   {{ errors["email"] }}
                 </b-form-invalid-feedback>
               </b-form-group>
-              <b-form-group id="fieldset-2" label-for="input-2" description="debes ingresar una contraseña que contenga minimo 8 caracteres">
-                <label for="input-2" class="d-block">Contraseña*</label>
+              <b-form-group id="fieldset-2" label="Contraseña:" label-for="input-2" description="debes ingresar una contraseña que contenga minimo 8 caracteres">
                 <b-form-input id="input-2" v-model="password" type="password" placeholder="Ingresa tu contraseña" :state="passwordValid"></b-form-input>
                 <b-form-invalid-feedback>
                   {{ errors["password"] }}
                 </b-form-invalid-feedback>
               </b-form-group>
-              <b-button class="button" variant="primary" size="lg" type="submit" >Enviar</b-button>
+              <b-button class="button" variant="primary" size="lg" type="submit" >Login</b-button>
+              <LoginText LoginMessage="¿no estas registrado?" />
             </b-form>
-            <p class="login-text text-center">
-              ¿No estas registrado?
-              <b-link src="">Crea una cuenta</b-link>
-            </p>
-          </div>
         </b-col>
       </b-row>
     </b-container>
@@ -45,28 +39,15 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
-	.login-form {
-		background-color: $bg-default;
-		border-radius: 12px;
-		padding: 80px 40px;
-		margin: 100px 0;
-  }
-  .login-text {
-    margin: 2rem 0;
-    a {
-      color: #000;
-      text-decoration: underline;
-      font-weight: bold;
-    }
-  }
-
- 
-
 </style>
 
 <script>
+  import LoginText from '@/components/LoginText.vue'
 	export default {
-		name: 'LoginForm',
+    name: 'LoginForm',
+    components: {
+      LoginText
+    },
 		data() {
 			return {
 				email: null,

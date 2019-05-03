@@ -1,0 +1,15 @@
+#nav {
+  background-color: $bg-default;
+  position: relative;
+  .navbar {
+    padding: 0;
+  }
+  .navbar-list {
+    flex-basis: 100%;
+  }
+}
+.nav-link {
+  color: $color-purple;
+  text-transform: uppercase;
+}
+

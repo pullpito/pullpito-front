@@ -10,7 +10,7 @@ var router = new VueRouter ({
 			path: '/',
 			name: 'Home',
 			component: () => import('./components/views/Home.vue'),
-			meta: { isPublic: false }
+      meta: { isPublic: false }
 		},
     {
 			path: '/login',
