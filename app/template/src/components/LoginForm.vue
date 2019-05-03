@@ -3,12 +3,23 @@
     <b-container>
       <b-row>
         <b-col md="8" offset-md="2">
-            <b-form 
-              action="" 
-              method="post"
-              @submit="formValidation"
-              class="form-login"
-            >
+            <b-form class="form-login">
+              <!-- <FormInput 
+                :model="email"
+                :errorMessage="errors['email']"
+                :state="emailValid"
+                label="Correo:" 
+                placeholder="example@example.com" 
+                type="text" />
+              <FormInput 
+                :model="password"
+                :errorMessage="errors['password']"
+                :state="passwordValid"
+                label="Contraseña:" 
+                placeholder="Ingresa tu contraseña" 
+                description="debes ingresar una contraseña que contenga minimo 8 caracteres" type="password" /> -->
+
+
               <b-form-group id="fieldset-1" label="Correo:" label-for="input-1">
                 <b-form-input id="input-1" v-model="email" :state="emailValid" placeholder="example@example.com" type="text" ></b-form-input>
                 <b-form-invalid-feedback>
@@ -23,12 +34,12 @@
                 </b-form-invalid-feedback>
               </b-form-group>
 
-              <b-button class="button" variant="primary" size="lg" type="submit" :disabled="disabled" @click="buttonSubmit">Login</b-button>
+              <b-button class="button" variant="primary" size="lg" type="submit" :disabled="buttonDisabled" @click="buttonSubmit">Login</b-button>
               <LoginText LoginMessage="¿no estas registrado?" />
 
-              <div class="loader d-flex align-items-center justify-content-center"> 
-                <b-spinner size="lg" label="Loading..." type="grow" variant="info"></b-spinner>          
-              </div> 
+              <div class="loader d-flex align-items-center justify-content-center" v-if="loading"> 
+                  <b-spinner size="lg" label="Loading..." type="grow" variant="info"></b-spinner>          
+              </div>
             </b-form>
         </b-col>
       </b-row>
@@ -62,17 +73,20 @@
 
 <script>
   import LoginText from '@/components/LoginText.vue'
+  import FormInput from '@/components/FormInput.vue'
 	export default {
     name: 'LoginForm',
     components: {
-      LoginText
+      LoginText,
+      FormInput
     },
 		data() {
 			return {
 				email: null,
         password: null,
         errors: [],
-        disabled: false,
+        buttonDisabled: false,
+        loading: false,
 			}
 		},
 		computed: {
@@ -95,40 +109,50 @@
 		},
 		methods: {
       buttonSubmit() {
-        console.log(this.disabled);
-        if(this.disabled == false) {
-          this.disabled = true;
-        } 
-      },
-      formValidation(event) {
-        event.preventDefault();
-        this.email = this.email || "";
-        this.password = this.password || "";
-        if(this.emailValid && this.passwordValid) {
+        this.buttonDisabled = true;
+        if(this.isFormValid()) {
+          this.loading = true;
 					let body = {
 						'email': this.email,
 						'password': this.password
-					}
+          }
 					this.$api
 						.post('/auth/sign_in', body)
-						.then(response => ( this.loginResponse(response) ))
-						.catch(error => ( console.log(error) ));
+						.then(response => ( this.onLoginResponseSuccess(response) ))
+						.catch(error => ( this.onLoginResponseFailure(error) ));
         } else {
+          // TODO: Show error to user
           console.log('form errors');
-				}
+        }
+      },
+      isFormValid() {
+        this.email = this.email || "";
+        this.password = this.password || "";
+        return this.emailValid && this.passwordValid;
 			},
-			loginResponse(response) {
+			onLoginResponseSuccess(response) {
+        this.buttonDisabled = false;
+        this.loading = false;
 				if (response.status === 200) {
 					this.$session.start();
 					this.$session.set('access-token', response.headers['access-token']);
 					this.$session.set('client', response.headers['client']);
 					this.$session.set('uid', response.headers['uid']);
-					this.$router.push('/');
-				} else {
-					// TODO: error message
+          this.$router.push('/');
+        } else {
+					// TODO: Show error to user
 					console.log("Response status: " + response.status);
 				}
-			}
+      },
+      onLoginResponseFailure(error) {
+        this.buttonDisabled = false;
+        this.loading = false;
+        if(error.response.status == 401) {
+          // TODO: Show error invalid credentials
+        } else {
+          // TODO: Show uncaught error
+        }
+      }
     }
   }
 </script>
