@@ -4,37 +4,23 @@
       <b-row>
         <b-col md="8" offset-md="2">
             <b-form class="form-login">
-              <!-- <FormInput 
-                :model="email"
-                :errorMessage="errors['email']"
-                :state="emailValid"
+              <FormInput
+                v-model="email"
                 label="Correo:" 
                 placeholder="example@example.com" 
-                type="text" />
-              <FormInput 
-                :model="password"
-                :errorMessage="errors['password']"
-                :state="passwordValid"
+                type="text"
+                :errorMessage="errors['email']"
+                :state="emailValid" />
+              <FormInput
+                v-model="password"
                 label="Contraseña:" 
                 placeholder="Ingresa tu contraseña" 
-                description="debes ingresar una contraseña que contenga minimo 8 caracteres" type="password" /> -->
-
-
-              <b-form-group id="fieldset-1" label="Correo:" label-for="input-1">
-                <b-form-input id="input-1" v-model="email" :state="emailValid" placeholder="example@example.com" type="text" ></b-form-input>
-                <b-form-invalid-feedback>
-                  {{ errors["email"] }}
-                </b-form-invalid-feedback>
-              </b-form-group>
-
-              <b-form-group id="fieldset-2" label="Contraseña:" label-for="input-2" description="debes ingresar una contraseña que contenga minimo 8 caracteres">
-                <b-form-input id="input-2" v-model="password" type="password" placeholder="Ingresa tu contraseña" :state="passwordValid"></b-form-input>
-                <b-form-invalid-feedback>
-                  {{ errors["password"] }}
-                </b-form-invalid-feedback>
-              </b-form-group>
-
-              <b-button class="button" variant="primary" size="lg" type="submit" :disabled="buttonDisabled" @click="buttonSubmit">Login</b-button>
+                description="debes ingresar una contraseña que contenga minimo 8 caracteres" 
+                type="password"
+                :errorMessage="errors['password']"
+                :state="passwordValid" />
+              <FormButton label="Login" :onClick="buttonSubmit"/>
+              <!-- <b-button class="button" variant="primary" size="lg" type="submit" :disabled="buttonDisabled" @click="buttonSubmit">Login</b-button> -->
               <LoginText LoginMessage="¿no estas registrado?" />
 
               <div class="loader d-flex align-items-center justify-content-center" v-if="loading"> 
@@ -49,7 +35,6 @@
 
 <style lang="scss">
 	@import "@/assets/sass/main.scss";
-	@import "@/assets/sass/components/_buttons.scss";
 	@import "@/assets/sass/components/_forms.scss";
   .login {
     background-position: center;
@@ -74,11 +59,14 @@
 <script>
   import LoginText from '@/components/LoginText.vue'
   import FormInput from '@/components/FormInput.vue'
+  import FormButton from '@/components/FormButton.vue'
+
 	export default {
     name: 'LoginForm',
     components: {
       LoginText,
-      FormInput
+      FormInput,
+      FormButton
     },
 		data() {
 			return {
