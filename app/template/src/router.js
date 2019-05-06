@@ -9,13 +9,13 @@ var router = new VueRouter ({
     {
 			path: '/',
 			name: 'Home',
-			component: () => import('./components/views/Home.vue'),
+			component: () => import('./views/Home.vue'),
       meta: { isPublic: false }
 		},
     {
 			path: '/login',
 			name: 'Login',
-			component: () => import('./components/views/Login.vue'),
+			component: () => import('./views/Login.vue'),
 			meta: { isPublic: true }
 		}
 	]

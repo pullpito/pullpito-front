@@ -1,14 +1,14 @@
 <template>
-	<section id="nav">
+	<section id="nav" class="bg-white">
 		<b-container fluid>
 			<b-row>
 				<b-col>
-					<b-navbar toggleable="lg" type="">
-            <HeaderBrand />
-            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+					<b-navbar toggleable="lg" type="primary">
+            <HeaderBrand  />
+            <HeaderBurger />
 						<b-collapse id="nav-collapse" is-nav>
-							<HeaderItem />
-							<HeaderProfile  align-self="end"/>
+							<HeaderList />
+							<HeaderProfile/>
 						</b-collapse>
 					</b-navbar>
 				</b-col>
@@ -17,23 +17,19 @@
 	</section>
 </template>
 
-
-<style lang="scss">
-	@import "@/assets/sass/main.scss";
-  @import "@/assets/sass/components/_nav.scss";
-</style>
-
 <script>
-  import HeaderItem from './HeaderItem.vue'
+  import HeaderList from './HeaderList.vue'
   import HeaderProfile from './HeaderProfile.vue'
   import HeaderBrand from './HeaderBrand.vue'
+  import HeaderBurger from './HeaderBurger.vue'
 
   export default {
     name: 'Header',
     components: {
-      HeaderItem,
+      HeaderList,
       HeaderProfile,
-      HeaderBrand
+      HeaderBrand,
+      HeaderBurger
     }
   }
 </script>

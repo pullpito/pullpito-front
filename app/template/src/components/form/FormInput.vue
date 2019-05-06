@@ -5,6 +5,11 @@
     </b-form-group>
 </template>
 
+<style lang="sass" scoped>
+    @import "@/assets/sass/main.scss";
+    @import "@/assets/sass/components/_forms.scss";
+</style>
+
 <script>
 export default {
     props: {
@@ -31,8 +36,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-    @import "@/assets/sass/main.scss";
-    @import "@/assets/sass/components/_forms.scss";
-</style>
 

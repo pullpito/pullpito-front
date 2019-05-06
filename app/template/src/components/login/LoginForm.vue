@@ -1,5 +1,5 @@
 <template>
-  <section class="login" :style="{ backgroundImage: 'url(' + require('@/assets/images/bg-login-2.png') + ')' }">
+  <section>
     <b-container>
       <b-row>
         <b-col md="8" offset-md="2">
@@ -20,7 +20,6 @@
                 :errorMessage="errors['password']"
                 :state="passwordValid" />
               <FormButton label="Login" :onClick="buttonSubmit"/>
-              <!-- <b-button class="button" variant="primary" size="lg" type="submit" :disabled="buttonDisabled" @click="buttonSubmit">Login</b-button> -->
               <LoginText LoginMessage="¿no estas registrado?" />
 
               <div class="loader d-flex align-items-center justify-content-center" v-if="loading"> 
@@ -36,11 +35,6 @@
 <style lang="scss">
 	@import "@/assets/sass/main.scss";
 	@import "@/assets/sass/components/_forms.scss";
-  .login {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
   .loader {
     position: absolute;
     top: 0;
@@ -57,9 +51,9 @@
 </style>
 
 <script>
-  import LoginText from '@/components/LoginText.vue'
-  import FormInput from '@/components/FormInput.vue'
-  import FormButton from '@/components/FormButton.vue'
+  import LoginText from '@/components/login/LoginText.vue'
+  import FormInput from '@/components/form/FormInput.vue'
+  import FormButton from '@/components/form/FormButton.vue'
 
 	export default {
     name: 'LoginForm',

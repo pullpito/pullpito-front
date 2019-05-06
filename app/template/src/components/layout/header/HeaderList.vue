@@ -4,9 +4,22 @@
 	</b-navbar-nav>
 </template>
 
+<style lang="scss" scope>
+	@import "@/assets/sass/helpers/_variables.scss";  
+  .navbar-list {
+    flex-basis: 100%;
+    .nav-item {
+      .nav-link {
+        color: $color-purple;
+      }
+    }
+  }
+  
+</style>
+
 <script>
   export default ({
-    name: 'HeaderItem',
+    name: 'HeaderList',
     data () {
       return {
         itemsNav: [
